@@ -1,9 +1,18 @@
+DOTFILESDIR=$HOME/dotfiles
+REPO=https://github.com/mauodias/.v2.git
+
+create_environment() {
+    mkdir -p $DOTFILESDIR
+    git clone $REPO $DOTFILESDIR
+}
+
 install_homebrew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 init() {
     install_homebrew
+    create_environment
 }
 
 init
