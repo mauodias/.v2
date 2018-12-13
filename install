@@ -6,8 +6,13 @@ create_environment() {
     git clone $REPO $DOTFILESDIR
 }
 
+install_homebrew_packages() {
+    cat homebrew_packages | xargs /usr/local/bin/brew install
+}
+
 install_homebrew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    install_homebrew_packages
 }
 
 init() {
