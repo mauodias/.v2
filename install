@@ -12,12 +12,12 @@ install_homebrew_packages() {
 
 install_homebrew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    install_homebrew_packages
 }
 
 init() {
     install_homebrew
     create_environment
+    install_homebrew_packages
 }
 
 init
