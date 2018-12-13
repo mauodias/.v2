@@ -4,6 +4,7 @@ REPO=https://github.com/mauodias/.v2.git
 create_environment() {
     mkdir -p $DOTFILESDIR
     git clone $REPO $DOTFILESDIR
+    cd $DOTFILESDIR
 }
 
 install_homebrew_packages() {
