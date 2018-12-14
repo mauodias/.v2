@@ -18,7 +18,7 @@ install_homebrew() {
 init() {
     install_homebrew
     create_environment
-    install_homebrew_packages
+    make
 }
 
 init
