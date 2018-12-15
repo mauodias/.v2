@@ -9,12 +9,7 @@ sync:
 	@git push -v
 
 update:
-	@-git diff-index --quiet HEAD -- ||:
-	@if [[ $rc != 0 ]]; then \
-		echo "Unstaged changes. Run 'make sync' first"; \
-	else \
-		git pull --rebase; \
-	fi
+	git pull --rebase;
 
 link:
 	@for i in *.symlink; do \
