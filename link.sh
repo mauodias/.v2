@@ -13,4 +13,6 @@ if [ $count != 0 ]; then
   done
 fi
 
-echo Finished linking dotfiles
+echo
+echo - Finished linking dotfiles
+echo

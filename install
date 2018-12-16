@@ -2,25 +2,35 @@ DOTFILESDIR=$HOME/dotfiles
 REPO=https://github.com/mauodias/.v2.git
 
 create_environment() {
+    echo
+    echo - Creating environment
+    echo
     mkdir -p $DOTFILESDIR
     git clone $REPO $DOTFILESDIR
     cd $DOTFILESDIR
 }
 
 install_homebrew() {
+    echo
+    echo - Installing Homebrew
+    echo
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 }
 
 setup_terminal() {
-# iTerm2
-# Specify the preferences directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm2"
-# Tell iTerm2 to use the custom preferences in the directory
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+    echo
+    echo - Setting up the Terminal
+    echo
+    # iTerm2
+    # Specify the preferences directory
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm2"
+    # Tell iTerm2 to use the custom preferences in the directory
+    defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 }
 
 init() {
+    echo Initializing dotfiles configuration...
     install_homebrew
     create_environment
     make
