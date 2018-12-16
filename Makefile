@@ -1,5 +1,5 @@
 install_packages:
-	@cat homebrew_packages | xargs /usr/local/bin/brew install
+	@brew bundle
 
 sync:
 	@git add -N .
