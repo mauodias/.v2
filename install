@@ -27,6 +27,9 @@ setup_terminal() {
     # Tell iTerm2 to use the custom preferences in the directory
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
+    # Allow homebrew's zsh to be set as user's default
+    command -v zsh | sudo tee -a /etc/shells
+    sudo chsh -s "$(command -v zsh)" "${USER}"
 }
 
 init() {
