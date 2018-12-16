@@ -22,7 +22,7 @@ echo - Linking NVIM config files
 echo
 
 NVIMFOLDER=~/.config/nvim
-NVIMINIT=~/.config/nvim/vim.init
+NVIMINIT=~/.config/nvim/init.vim
 
 if [ -e $NVIMFOLDER ]; then
   ln -s $NVIMFOLDER ~/.vim
