@@ -7,18 +7,24 @@ create_environment() {
     cd $DOTFILESDIR
 }
 
-install_homebrew_packages() {
-    cat homebrew_packages | xargs /usr/local/bin/brew install
-}
-
 install_homebrew() {
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
+
+setup_terminal() {
+# iTerm2
+# Specify the preferences directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
+# Tell iTerm2 to use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+
 }
 
 init() {
     install_homebrew
     create_environment
     make
+    setup_terminal
 }
 
 init
