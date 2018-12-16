@@ -1,18 +1,18 @@
-install_packages:
+.PHONY: install
+install: update pull link
+
+update:
 	@brew bundle
 
-sync:
+push:
 	@git add -N .
 	@git add -p
 	@git commit -v
 	@git pull --rebase
 	@git push -v
 
-update:
+pull:
 	@git pull --rebase;
 
 link:
 	@./link.sh
-
-.PHONY: install
-install: install_packages update link
