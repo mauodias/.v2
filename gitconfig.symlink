@@ -8,6 +8,10 @@
 	prompt = false
 [alias]
 	d = difftool
+        # the acronym stands for "subtree add"
+        sba = "!f() { git subtree add --prefix $2 $1 master --squash; }; f"
+        # the acronym stands for "subtree update"
+        sbu = "!f() { git subtree pull --prefix $2 $1 master --squash; }; f"
 [color]
 	ui = true
 [hub]
