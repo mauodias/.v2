@@ -13,7 +13,7 @@ update:
 
 link:
 	@for i in *.symlink; do \
-	  if [ ! -e ~/.$(basename $i .symlink) ]; then
+	  if [ ! -e ~/.$(basename $i .symlink) ]; then \
 	    ln -s $PWD/$i ~/.$(basename $i .symlink) \
 	    echo Linked $PWD/$i to ~/.$(basename $i .symlink) \
 	  else \
