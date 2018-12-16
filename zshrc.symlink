@@ -25,6 +25,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias vim=nvim
 alias proj="cd ~/Projects; clear; ls -a"
 alias learn="cd ~/Learning; clear; ls -a"
 # fix alias below
