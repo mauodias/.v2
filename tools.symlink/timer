@@ -1,0 +1,37 @@
+#!/bin/bash
+
+if [ -e "$HOME/.tools/timer.reg" ]; then
+  TIMER=$(cat ~/.tools/timer.reg)
+else
+  TIMER=$(date +%s)
+  echo $TIMER > ~/.tools/timer.reg
+fi
+
+if [[ $1 = 'show' ]]; then
+  diff=$(($TIMER - $(date +%s)))
+  if [ $diff -lt 0 ]; then
+    echo 0:00
+    exit 0
+  else
+    secs=$(($diff%60))
+    mins=$(($diff/60))
+    printf "%d:%02d\n" $mins $secs
+    exit 0
+  fi
+fi
+
+if [ $# -eq 0 ]; then
+  DELTA=10
+else
+  DELTA=$1
+fi
+
+NOW=$(date +%s)
+diff=$((TIMER-NOW))
+if [ $diff -lt 0 ]; then
+  TIMER=$((NOW + DELTA * 60))
+else
+  TIMER=$((TIMER + DELTA * 60))
+fi
+
+echo $TIMER > $HOME/.tools/timer.reg

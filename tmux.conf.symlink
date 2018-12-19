@@ -45,4 +45,11 @@ setw -g pane-base-index 1
 
 set-option -g default-shell /usr/local/bin/zsh
 
+# Add timer to statusbar
+set -g status-interval 1
+set -g status-right-length 100
+set -g status-right '[Timer: #(~/.tools/timer show)] - "#T" %R %d-%b-%g'
+# Add keybinding to increase timer
+bind -r C-q run-shell "~/.tools/timer"
+
 source-file ~/.tmux/tmux-colors-solarized/tmuxcolors-256.conf
