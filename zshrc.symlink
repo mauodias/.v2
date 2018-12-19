@@ -44,3 +44,31 @@ randpass () {
   fi
   LC_CTYPE=C < /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-$len};echo;
 }
+
+timer() {
+  if [[ $1 = 'show' ]]; then
+    diff="$(($TIMER - $(date +%s)))"
+    if [ $diff -lt 0 ]; then
+      echo 0:00
+      return 0
+    else
+      secs="$(($diff % 60))"
+      mins="$(($diff / 60))"
+      echo $mins:$secs
+      return 0
+    fi
+  fi
+
+  if [ -z {$1+x} ]; then
+    DELTA=$1
+  else
+    DELTA=10
+  fi
+
+  if [ -z {$TIMER+x} ] || [ "$TIMER" -lt "$(date +%s)" ]; then
+    NOW=$(date +%s)
+    TIMER=$((NOW+ 60 * DELTA))
+  else
+    TIMER=$((TIMER + 60 * DELTA))
+  fi
+}
